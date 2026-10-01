@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#0f0f13] p-10 flex justify-center items-center min-h-screen">
+
+    <div class="w-full max-w-xl bg-[#1a1a20] p-6 rounded-2xl text-white shadow-2xl">
+        <h2 class="text-xl font-bold mb-4">Prueba de Fuego</h2>
+        <textarea id="mi-texto" class="w-full bg-black p-3 rounded mb-4 text-white" rows="3" placeholder="Escribe algo como 'caja'..."></textarea>
+        
+        <button type="button" onclick="probarMagia()" class="w-full py-3 bg-[#00b4d8] font-bold rounded cursor-pointer">
+            Generar Imagen
+        </button>
+
+        <div id="contenedor-resultado" class="mt-6 w-full h-64 bg-black rounded relative flex items-center justify-center overflow-hidden border border-white/20">
+            <span id="texto-espera">La imagen saldrá aquí</span>
+        </div>
+    </div>
+
+    <script>
+        function probarMagia() {
+            var txt = document.getElementById('mi-texto').value.trim();
+            if(!txt) {
+                alert('Escribe algo primero');
+                return;
+            }
+            
+            var caja = document.getElementById('contenedor-resultado');
+            caja.innerHTML = '<div class="text-[#00b4d8] font-bold animate-pulse">Cargando simulador...</div>';
+            
+            setTimeout(function() {
+                caja.innerHTML = '<img src="https://images.unsplash.com/photo-1607590829875-9279e830b563?auto=format&fit=crop&w=800&q=85" class="absolute inset-0 w-full h-full object-cover">';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
